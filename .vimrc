@@ -76,8 +76,9 @@ set softtabstop=0
 set formatoptions=q
 set nowrap
 set undofile
+set nobackup
+set noswapfile
 set undodir=~/.vim/undo
-set undodir=~/.vim/swap
 set backspace=indent,eol,start " インサートモード時にバックスペースを使う
 "noremap <CR> o<ESC>
 nnoremap <C-]> g<C-]>
@@ -118,7 +119,13 @@ nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
 "-------------------------------------------------------------
 " ctags
 "-------------------------------------------------------------
-let g:auto_ctags = 1
+if has('win32') || has ('win64')
+    let g:auto_ctags = 0
+endif
+
+if has('unix') || has('mac')
+    let g:auto_ctags = 1
+endif
 "-------------------------------------------------------------
 " Unite
 "-------------------------------------------------------------
