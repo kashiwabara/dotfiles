@@ -52,6 +52,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'DirDiff.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'junegunn/vim-easy-align'
 
 call neobundle#end()
 
@@ -105,6 +106,9 @@ let g:lightline = {
 colorscheme solarized
 let g:solarized_termtrans=1
 set laststatus=2 
+set scrolloff=5
+
+
 "-------------------------------------------------------------
 " git gutter
 "-------------------------------------------------------------
@@ -237,3 +241,11 @@ autocmd QuickfixCmdPost vimgrep call OpenModifiableQF()
 " Gundo
 "-------------------------------------------------------------
 nnoremap <F5> :GundoToggle<CR>
+
+"-------------------------------------------------------------
+" easy align
+"-------------------------------------------------------------
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
