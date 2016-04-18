@@ -53,7 +53,11 @@ NeoBundle 'DirDiff.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'junegunn/vim-easy-align'
+NeoBundle 'mbbill/undotree'
 
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'majutsushi/tagbar'
+"NeoBundle 'kevinw/pyflakes-vim.git'
 call neobundle#end()
 
 " Required:
@@ -85,9 +89,10 @@ nnoremap <C-]> g<C-]>
 let mapleader=" "
 nmap <Leader>r <plug>(quickrun)
 autocmd BufNewFile,BufRead *.ep set filetype=html
+"autocmd FileType html setl filetype=htmldjango
 syntax enable
 set hlsearch
-set background=dark
+"set background=dark
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
@@ -98,14 +103,14 @@ if has('path_extra')
     set tags+=tags;~/
 endif
 
-set t_Co=256
-set background=dark
+"set t_Co=256
+"set background=dark
 
-let g:lightline = {
-      \ 'colorscheme': 'solarized'
-      \ }
-colorscheme solarized
-let g:solarized_termtrans=1
+"let g:lightline = {
+"      \ 'colorscheme': 'solarized'
+"      \ }
+"colorscheme solarized
+"let g:solarized_termtrans=1
 set laststatus=2 
 set scrolloff=5
 
@@ -167,6 +172,7 @@ nnoremap <silent> <Leader>o :<C-u>Unite -vertical -no-quit -winwidth=40 outline<
 "-------------------------------------------------------------
 let g:syntastic_perl_checkers = ['perl']
 let g:syntastic_enable_perl_checker = 1
+let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 "-------------------------------------------------------------
 " neocomplete
 "-------------------------------------------------------------
@@ -221,7 +227,7 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
@@ -247,7 +253,8 @@ autocmd QuickfixCmdPost vimgrep call OpenModifiableQF()
 "-------------------------------------------------------------
 " Gundo
 "-------------------------------------------------------------
-nnoremap <F5> :GundoToggle<CR>
+"nnoremap <F5> :GundoToggle<CR>
+nnoremap <F5> :UndotreeToggle<CR>
 
 "-------------------------------------------------------------
 " easy align
